@@ -1,8 +1,9 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$szazas = (int) readline("Hány db 100-Ft.-os van: ");
+$ketszaz = (int) readline("Hány db 200-Ft.-os van: ");
+$otszaz = (int) readline("Hány db 500-Ft.-os van:");
 
+$osszeg =$szazas * 100 + $ketszazas * 200 + $otszazas * 500;
+
+echo "A Kasszabán összesen: $osszeg";
