@@ -1,8 +1,13 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+    $c = (float) readline("Add meg a hőmérsékletett(Celsiusban): ");
+    
+    $f = $c * 9 / 5 + 32;
+    
+    readline("Hömérséklet Fahrenheit-ben: $f °F");
+    
+    $f = (float) readline("Add meg a hőmérsékletett(Fahrenheit): ");
+    
+    $c = ($f - 32) * 5 / 9;
+    
+    readline("Hömérséklet Fahrenheit-ben: $c °C");
