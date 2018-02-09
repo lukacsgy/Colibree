@@ -1,8 +1,13 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+for ($i = 4; $i <= 6; $i++){
+	for ($j= 4; $j <= 6; $j++){
+		for ($k = 4; $k <= 6; $k++){
+			for ($l = 4; $l <= 6; $l++){
+				echo $i.$j.$k.$l."\n";
+			}
+		}
+	}
+}
+
 
