@@ -1,8 +1,14 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$salery = (int) readline("Add meg a fizetsed Ft-ban: ");
+
+if ($salery < 200000){
+	echo "Fizetesed alacsony";
+}
+elseif ($salery <= 400000) {
+	echo "Fizetesed atlagos";
+}
+else{
+	echo "Fizetesed magas!Gratulalok";
+}
 
