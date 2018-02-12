@@ -1,8 +1,23 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$m = 3;
+$n = 2;
+$a = 5;
+$b = 2;
+$k = 1;
 
+
+for($x = 0; $x < $n; $x++){
+	for($y = 0; $y < $b; $y++){
+		for ($i = 0; $i < $m; $i++){
+			for($j = 0; $j < $a; $j++){
+				echo "o";
+			}
+			for($l = 0; $l < $k; $l++){
+				echo " ";
+			}
+		}
+		echo "\n";
+	}
+	echo "\n";
+}
