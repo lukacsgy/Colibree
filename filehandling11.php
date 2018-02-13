@@ -15,9 +15,12 @@ if ($argc > 2){
 		fwrite($target, $line);
 	}while($line !== FALSE);
 	
-	if (!feof){
+	if (!feof($source)){
 		echo "error";
 		die();
+	}
+	else{
+		echo "The file " . $argv[1]. " sucessfully in the file " .$argv[2];
 	}
 	
 	fclose($source);
