@@ -19,18 +19,23 @@ $newline = readline("Input the content of the new line :");
 $lineRemove = readline("Input the line you want to remove: ");
 
 /*Itt történik a másolás az ideglénes fájlba*/
-$part = 0;
-
-while (feof($fp) !== TRUE){
-	$part++;
-	$lines = fgets($fp);
-	if ($part != $lineRemove){
+$i = 0;
+while (($lines = fgets($fp)) !== false){
+	$i++;
+	
+	if ($i != $lineRemove){
 		fwrite($temp, $lines);
 	}
 	else{
-		fwrite($temp, $newline);
+		fwrite($temp, $newline ."\n");
 	}
 }
+
+if (!feof($fp)) {
+	echo "hiba";
+	die(1);
+}
+
 /* Itt töröljük a régit és átrijuk az uj nevét*/
 
 fclose($fp);
