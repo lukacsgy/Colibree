@@ -6,7 +6,7 @@ $first = readline("Add meg az 1. szamot: ");
 	
 $max = $first;
 $min = $first;
-$szum = 0;
+$szum = $first;
 
 for($i = 1; $i < $size; $i++){
 	$current = (int) readline(" Add meg a ". ($i + 1) . " szamot: ");
