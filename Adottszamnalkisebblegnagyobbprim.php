@@ -1,8 +1,21 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+if ($argc > 1){
+	$number = $argv[1];
+	$prime = TRUE;
+	$d = 2;
+	
+	while(($d < $number) && $prime !== FALSE ){
+		if($number % $d == 0){
+			$prime = FALSE;
+		}
+		$d++;
+	}
+	
+	if($prime){
+		echo "Prim!";
+	}
+	else{
+		echo "Nem prim!";
+	}
+}
