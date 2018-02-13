@@ -15,8 +15,6 @@ if ($temp === FALSE){
 	die(1);
 }
 
-echo "The Content of the file ". $filename." is :\n";
-
 $newline = readline("Input the content of the new line :");
 $lineRemove = readline("Input the line you want to remove: ");
 
@@ -32,7 +30,7 @@ while (feof($fp) !== TRUE){
 	else{
 		fwrite($temp, $newline);
 	}
-
+}
 /* Itt töröljük a régit és átrijuk az uj nevét*/
 
 fclose($fp);
