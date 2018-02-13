@@ -39,20 +39,4 @@ fclose($temp);
 unlink($filename);
 rename("temp.txt", $filename);
 
-/*Kiiaratjuk konzolra a fájlt*/
-
-$fp = fopen($filename, "r");
-
-if ($fp === FALSE){
-	echo "Error: Unable to open file\n";
-	die(1);
-}
-
-echo "The Content of the file ". $filename." is :\n";
-
-while (feof($fp) !== TRUE){
-	$line = fgets($fp);
-	echo $line ;
-}
-
-fclose($fp);
+echo "Replacement did successfully..!! ";
