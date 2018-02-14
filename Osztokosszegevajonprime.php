@@ -1,8 +1,30 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+if($argc > 1){
+	$number = $argv[1];
+
+	$szum = 0;
+
+	for($div = 1; $div <= $number; $div++){
+		if($number % $div == 0){
+			$szum += $div;
+		}
+	}
+
+	$possiblePrim = true;
+	$oszto = 2;
+	while ($possiblePrim && $oszto < $szum) {
+		if ($szum % $oszto == 0) {
+			$possiblePrim = false;
+		}
+		$oszto++;
+	}
+
+	if ($possiblePrim) {
+		echo $szum . ", Prim szam az Osztok Osszege!";
+	}
+	else{
+		echo $szum . ", Nem Prim szam az Osztok Osszege!";
+	}
+}
 
