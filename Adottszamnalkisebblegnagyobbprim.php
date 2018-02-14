@@ -1,21 +1,21 @@
 <?php
 
-if ($argc > 1){
-	$number = $argv[1];
-	$prime = TRUE;
-	$d = 2;
+
+	$number = (int)$argv[1];
 	
-	while(($d < $number) && $prime !== FALSE ){
-		if($number % $d == 0){
-			$prime = FALSE;
+	$possiblePrim = false;
+	
+	for($test = ($number - 1); !$possiblePrim; $test--){
+		
+		$possiblePrim = true;
+		$div = 2;
+		
+		while ($possiblePrim && $div < $test) {
+			if ($test % $div == 0) {
+				$possiblePrim = false;
+			}
+			$div++;
 		}
-		$d++;
 	}
-	
-	if($prime){
-		echo "Prim!";
-	}
-	else{
-		echo "Nem prim!";
-	}
-}
+	 echo ($test + 1);
+
