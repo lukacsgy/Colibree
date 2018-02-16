@@ -1,0 +1,3 @@
+<?php
+
+$seattingCapacity = [195];
