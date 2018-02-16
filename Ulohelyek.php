@@ -1,3 +1,5 @@
+
+
 <?php
 
 if ($argc > 1) {
@@ -11,30 +13,27 @@ if ($argc > 1) {
 	}
 
 	$reservation = $argv[1];
-
+	
+	
 	$size = count($seattingCapacity);
 	
-
-	for ($i = 0; ($i < $size); $i++) {
-	
-		if ($seattingCapacity[$i] < 1) {
-			$empty = true;
-			$row = floor(($i + 1) / 14);
-			$seat = 1;
-
-			while ($seat < $reservation) {
-
-				$empty = false;
-				$next = $i + $seat;
-
-				if($size > $next){
-					if (($seattingCapacity[$next] < 1) && ($row == floor($next / 14))) {
-						$empty = true;
-						echo "\n" . $row . "[" . ($i + 1) . "]";
-					}
+	$setNeed = 4;
+	for($i = 0; $i < $size; $i++){
+		if($seattingCapacity[$i] == 0){
+			$setNeed--;
+			for($j = 1; $j <= $setNeed; $j++){
+				$nextSet = $i + $j;
+				
+				if($seattingCapacity[$nextSet] == 0){
+					$setNeed--;
 				}
-				$seat++;
+				else{
+					break;
+				}
 			}
+		}
+		else{
+			$setNeed =$reservation;
 		}
 	}
 }
