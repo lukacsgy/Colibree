@@ -4,7 +4,7 @@
 
 if ($argc > 1) {
 
-	for ($i = 0; $i < 25; $i++) {
+	for ($i = 0; $i < 26; $i++) {
 		if ($i % 13 == 0) {
 			echo "\n";
 		}
@@ -13,27 +13,29 @@ if ($argc > 1) {
 	}
 
 	$reservation = $argv[1];
-	
-	
 	$size = count($seattingCapacity);
 	
-	$setNeed = 4;
+	$takenSeat = $reservation;
+
 	for($i = 0; $i < $size; $i++){
-		if($seattingCapacity[$i] == 0){
-			$setNeed--;
-			for($j = 1; $j <= $setNeed; $j++){
-				$nextSet = $i + $j;
-				
-				if($seattingCapacity[$nextSet] == 0){
-					$setNeed--;
-				}
-				else{
-					break;
-				}
-			}
+		
+		$line = ($i + 1) % 13;
+		floor($line);
+		if(($seattingCapacity[$i] == 0) && ($line != 0)){
+			$takenSeat--;
+			echo "\n" . ($i + 1) . " jo ," . $takenSeat;
+					
 		}
-		else{
-			$setNeed =$reservation;
+		else {
+			$takenSeat = $reservation;
 		}
+		
+		if ($takenSeat == 0){
+			echo "Yeah!!!";
+			$takenSeat = $reservation;
+		}
+		
+		
 	}
+	
 }
