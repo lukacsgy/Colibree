@@ -21,11 +21,6 @@ while ($day[$i] !== 0) {
 array_pop($day);
 array_pop($visitors);
 
-print_r($day);
-print_r($visitors);
-
-
-
 $size = count($day);
 
 $crowdedDay = $day[0];
@@ -35,12 +30,13 @@ $maxVisit = $visitors[0];
 $minVisit = $visitors[0];
 
 for ($i = 0; $i < $size; $i++) {
-	if ($maxVisit < $visitors[$i]) {
+	
+	if (!lessOrNoT($maxVisit, $visitors[$i])) {
 		$crowdedDay = $day[$i];
 		$maxVisit = $visitors[$i];
 	}
 
-	if (($minVisit > $visitors[$i]) && ($visitors[$i] != 0)) {
+	if (lessOrNot($minVisit, $visitors[$i]) && ($visitors[$i] != 0)) {
 		$airyDay = $day[$i];
 		$minVisit = $visitors[$i];
 	}
@@ -50,4 +46,11 @@ for ($i = 0; $i < $size; $i++) {
 echo "\nA Legtobb Latogato Ezzen A Napon Van: " . $crowdedDay;
 echo "\nA Legkevesebb Latogato Ezzen A Napon Van: " . $airyDay;
 
-
+function lessOrNot($checkingNumber,$maybeSmaller){
+	if ($checkingNumber > $maybeSmaller) {
+		return true;
+	}
+	else{
+		return false;
+	}
+}
