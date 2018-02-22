@@ -1,8 +1,19 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$fp = fopen("Text.txt", "r");
+
+if ($fp === false) {
+	echo "Error: Unable to open file\n";
+	die(1);
+}
+
+
+$db = 0;
+while ( fgets($fp) !== FALSE ){
+	$db++;
+}
+
+echo "The lines in the file Text.txt are :". $db;
+
+
 

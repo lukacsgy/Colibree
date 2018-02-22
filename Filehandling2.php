@@ -7,5 +7,6 @@ if ($fg === false) {
 	die(1);
 }
 echo "The file Text.txt created successfully...!!\n";
+
 echo fgets($fg);
 fclose($fg);

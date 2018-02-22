@@ -11,6 +11,7 @@ $i = 0;
 while ($day[$i] !== 0) {
 	$i++;
 	fscanf(STDIN, "%d %d", $day[$i], $visitors[$i]);
+	
 	for ($j = 0; $j < $i; $j++) {
 		if ($day[$j] == $day[$i]) {
 			$visitors[$j] += $visitors[$i];
@@ -30,7 +31,7 @@ $maxVisit = $visitors[0];
 $minVisit = $visitors[0];
 
 for ($i = 0; $i < $size; $i++) {
-	
+
 	if (!lessOrNoT($maxVisit, $visitors[$i])) {
 		$crowdedDay = $day[$i];
 		$maxVisit = $visitors[$i];
@@ -41,16 +42,16 @@ for ($i = 0; $i < $size; $i++) {
 		$minVisit = $visitors[$i];
 	}
 }
-
+print_r($visitors);
+print_r($day);
 
 echo "\nA Legtobb Latogato Ezzen A Napon Van: " . $crowdedDay;
 echo "\nA Legkevesebb Latogato Ezzen A Napon Van: " . $airyDay;
 
-function lessOrNot($checkingNumber,$maybeSmaller){
+function lessOrNot($checkingNumber, $maybeSmaller) {
 	if ($checkingNumber > $maybeSmaller) {
 		return true;
-	}
-	else{
+	} else {
 		return false;
 	}
 }
