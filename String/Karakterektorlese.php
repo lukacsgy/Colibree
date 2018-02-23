@@ -18,5 +18,5 @@ function trimming($parameter, $trimChar) {
 		$end--;
 	}
 
-	return$parameter;
+	return $parameter;
 }
