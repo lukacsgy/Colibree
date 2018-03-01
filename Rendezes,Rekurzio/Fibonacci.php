@@ -5,36 +5,40 @@
   Az n változó értékét a felhasználó adhassa meg! Írd meg rekurzívan és iteratívan is!
  */
 
-$whichFibonacci = readline("Add meg hanyadik Fibonacci szam erdekel: ");
+$howLong = readline("Add meg hany db Fibonacci szam erdekel: ");
 
 
-/*iterativ megoldas */
-//
-//if ($whichFibonacci > 1) {
+/* iterativ megoldas */
+
+//if ($howLong > 1) {
 //	$formerNumber = 0;
 //	$previousNumber = 1;
 //	$fibonacci;
-//
-//	for ($i = 1; $i < $whichFibonacci; $i++) {
+//	echo "$previousNumber, ";
+//	for ($i = 1; $i < $howLong; $i++) {
 //		$fibonacci = $formerNumber + $previousNumber;
 //		$formerNumber = $previousNumber;
 //		$previousNumber = $fibonacci;
+//		echo "$fibonacci, ";
 //	}
 //} else {
-//	$fibonacci = $whichFibonacci;
+//	$fibonacci = $howLong;
+//	echo $fibonacci;
 //}
-//echo $fibonacci;
 
 
-echo Fibonacci($whichFibonacci);
+for ($i = 1; $i <= $howLong; $i++){
+	echo Fibonacci($i) . ", ";	
+}
 
+echo Fibonacci($howLong);
 
-function Fibonacci($whichFibonacci){
-	if ($whichFibonacci <= 1){
-		return $whichFibonacci;
-	}
-	else{
-		$fibonacci = Fibonacci($whichFibonacci - 1) + Fibonacci($whichFibonacci - 2);
+function Fibonacci($howLong) {
+
+	if ($howLong <= 1) {
+		return $howLong;
+	} else {
+		$fibonacci = Fibonacci($howLong - 1) + Fibonacci($howLong - 2);
 		return $fibonacci;
 	}
 }
