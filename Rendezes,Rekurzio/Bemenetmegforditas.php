@@ -7,7 +7,6 @@
 $string = readline("Add meg a szoveget: ");
 echo contraiwise($string, strlen($string));
 
-
 function contraiwise($string, $stringLength) {
 
 	if ($stringLength > 0) {
