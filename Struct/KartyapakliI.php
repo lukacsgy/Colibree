@@ -32,48 +32,44 @@ for ($i = 0; $i < rand(50, 100); $i++) {
 
 sort($kartya);
 
-//$kartya[1] = ["szin" => 1, "szam" => 2];
-//if (doubleCard($kartya)) {
-//	echo "Pakli jo";
-//} else {
-//	echo "Pakli rossz";
-//}
 
-doubleCard($kartya);
-//if (checkingForSameCards($kartya)) {
-//	echo "fasza";
-//} else {
-//	echo "nem";
-//}
+if (doubleCard($kartya)) {
+	echo "Pakliban Van Dupla Lap";
+} else {
+	echo "A Pakli-ban Minden lap megvan 1x-er";
+}
 
-/* Kiprobálom Strázsa technikát..
-  Végig megyek szamokon és váltok szint */
-doubleCard($kartya);
+/* Csak rendezet paklinal mukodik */
 
 function doubleCard($kartya, $i = 0) {
-	
-	if ($kartya[$i] == $kartya[$i + 1]) {
-		
-		return doubleCard($kartya, $i + 1) . "buzi, ";
+
+	if ($i < count($kartya) - 1) {
+		if ($kartya[$i] != $kartya[$i + 1]) {
+			return doubleCard($kartya, $i + 1);
+		}
+		else{
+			return true;
+		}
 	}
-//	
-//	if($i > count($kartya)){
-//		return false;
-//	}
-//	
-//	return true;
+	return false;
 }
 
-function sentinelSearch($kartya, $checkValue) {
-	$itsIn = false;
-	array_push($kartya, $checkValue);
-	$i = 0;
-	while ($kartya[$i] != $checkValue) {
-		$i++;
-	}
-	if ($i != count($kartya) - 1) {
-		return $itsIn = true;
-	}
+/* Dani hiányos keresése */
 
-	return $itsIn;
+
+for ($k = 0; $k < count($kartya); $k += 13) {
+    for ($i = $k; $i < $k + 12; $i++) {
+        if ($kartya[$i]["szin"] == $kartya[$i + 1]["szin"]) {
+            continue;
+        } else {
+            die("es a pakli HIÁNYOS.\n");
+        }
+        if ($kartya[$i]["szam"] == $kartya[$i + 1]["szam"] - 1) {
+            continue;
+        } else {
+            die("es a pakli HIÁNYOS.\n");
+        }
+    }
 }
+
+echo " es A Pakli Nem Hianyos.\n"; 
