@@ -13,18 +13,18 @@ $lodgTime = readline("Hany Percig Tart Majd A Lerakodas(percben):\t ");
 
 $licensePlateNumber = readline("Add Meg A Kamion Rendszamat: \t");
 
-$fp = fopen("shipment.txt", "a");
+$fp = fopen("shipment.txt", "a+");
 
 fwrite($fp, $packName . "\n");
+fwrite($fp, $lodgName . "\n");
+
 fwrite($fp, $packDate . "\n");
 fwrite($fp, $packTime . "\n");
 
-fwrite($fp, $lodgName . "\n");
 fwrite($fp, $lodgDate . "\n");
 fwrite($fp, $lodgTime . "\n");
 
 fwrite($fp, $licensePlateNumber. "\n");
-
 
 fclose($fp);
 
