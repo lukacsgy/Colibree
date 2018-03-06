@@ -11,7 +11,7 @@ while(($shipment = readShipment($fp)) != false){
 
 for($i = 0; $i < count($shipments); $i++){
 	
-	echo trim($shipments[$i]["packName"]) . " -> " . trim($shipments[$i]["lognName"]) . " w\\ " . trim($shipments[$i]["plateNumber"]) . "\n"
+	echo trim($shipments[$i]["packName"]) . " -> " . trim($shipments[$i]["lognName"]) . ' w\ ' . trim($shipments[$i]["plateNumber"]) . "\n"
 	. "@" . trim($shipments[$i]["packName"]) . date(" Y.m.d H:i", strtotime($shipments[$i]["packDate"])) . " - "
     . date("Y.m.d H:i", strtotime($shipments[$i]["packDate"]) + $shipments[$i]["packDuration"]) . "\n"
 	. "@" . trim($shipments[$i]["lognName"]) . date(" Y.m.d H:i", strtotime($shipments[$i]["lognDate"])) . " - "
@@ -27,11 +27,13 @@ function readShipment($fp) {
 	
 	return [
 		"packName" => $packname,
-		"lognName" => fgets($fp),
 		"packDate" => fgets($fp),
 		"packDuration" => (int) fgets($fp) * 60,
+		
+		"lognName" => fgets($fp),
 		"lognDate" => fgets($fp),
 		"lognDuration" => (int) fgets($fp) * 60,
+		
 		"plateNumber" => fgets($fp)
 	];
 }

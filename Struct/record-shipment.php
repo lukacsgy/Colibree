@@ -1,31 +1,54 @@
 <?php
 
-echo "Egy Szallitast Rogzitunk!. Add Meg A Kert Adatokat\n\n";
-
 $packName = readline("Add Meg A Felrakodas Helyet(Ceg nev):\t ");
-$lodgName = readline("Add Meg A Lerakodas Helyet(Ceg nev): \t");
-
 $packDate = readline("Add meg Felpakolas Idopontjat(Év Honap Nap Ora:Perc) Szam Formatumban:\t");
-$packTime = readline("Hany Percig Tart Majd A Felpakolas(percben):\t ");
 
-$lodgDate = readline("Add meg Lerakodas Idopontjat(Év-Honap-Nap Ora:Perc) Szam Formatumban:\t");
-$lodgTime = readline("Hany Percig Tart Majd A Lerakodas(percben):\t ");
+if (!emptyPlace("shipment.txt", $packName, $packDate)) {
+	echo "Az Idopont foglalt. Kerjuk Adjon Meg Új Idopontott";
+} else {
 
-$licensePlateNumber = readline("Add Meg A Kamion Rendszamat: \t");
+	$packDuration = readline("Hany Percig Tart Majd A Felpakolas(percben):\t ");
 
-$fp = fopen("shipment.txt", "a+");
+	$lodgName = readline("Add Meg A Lerakodas Helyet(Ceg nev): \t");
+	$lodgDate = readline("Add meg Lerakodas Idopontjat(Év-Honap-Nap Ora:Perc) Szam Formatumban:\t");
 
-fwrite($fp, $packName . "\n");
-fwrite($fp, $lodgName . "\n");
+	if (!emptyPlace("shipment.txt", $lodgName, $lodgDate)) {
+		echo "Az Idopont foglalt. Kerjuk Adjon Meg Új Idopontott";
+	} else {
 
-fwrite($fp, $packDate . "\n");
-fwrite($fp, $packTime . "\n");
+		$lodgDuration = readline("Hany Percig Tart Majd A Lerakodas(percben):\t ");
 
-fwrite($fp, $lodgDate . "\n");
-fwrite($fp, $lodgTime . "\n");
+		$licensePlateNumber = readline("Add Meg A Kamion Rendszamat: \t");
 
-fwrite($fp, $licensePlateNumber. "\n");
+		$fp = fopen("shipment.txt", "a+");
 
-fclose($fp);
+		file_put_contents("shipment.txt", $packName . "\n", FILE_APPEND);
+		file_put_contents("shipment.txt", $packDate . "\n", FILE_APPEND);
+		file_put_contents("shipment.txt", $packDuration . "\n", FILE_APPEND);
 
+		file_put_contents("shipment.txt", $lodgName . "\n", FILE_APPEND);
+		file_put_contents("shipment.txt", $lodgDate . "\n", FILE_APPEND);
+		file_put_contents("shipment.txt", $lodgDuration . "\n", FILE_APPEND);
 
+		file_put_contents("shipment.txt", $licensePlateNumber . "\n", FILE_APPEND);
+
+		fclose($fp);
+	}
+}
+
+function emptyPlace($file, $placeName, $packDate) {
+	$checkingArray = file("shipment.txt");
+
+	for ($i = 0; $i < count($checkingArray); $i++) {
+		if (trim($checkingArray[$i]) === $placeName) {
+				if(trim($checkingArray[$i + 1]) === $packDate) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+function filehandling($array){
+	
+}
