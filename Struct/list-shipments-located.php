@@ -7,3 +7,6 @@ A lista csak a végponton szükséges információkat tartalmazza.
 Továbbiak a csatolt tesztben.
  */
 
+
+
+
