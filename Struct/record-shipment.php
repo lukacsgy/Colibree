@@ -14,6 +14,17 @@ emptyPlace("shipment.txt", $lodgDate, $lodgDuration);
 
 $licensePlateNumber = readline("Add Meg A Kamion Rendszamat: \t");
 
+$shipments = [];
+
+$fp = fopen("shipment.txt", "a+");
+
+while (($shipment = readShipment($fp)) != false){
+	$shipments[] = $shipment;
+}
+
+fclose($fp);
+print_r($shipments);
+
 $fp = fopen("shipment.txt", "a+");
 
 file_put_contents("shipment.txt", $packName . "\n", FILE_APPEND);
@@ -28,11 +39,28 @@ file_put_contents("shipment.txt", $licensePlateNumber . "\n", FILE_APPEND);
 
 fclose($fp);
 
+function readShipment($fp){
+	$packname = fgets($fp);
+	if ($packname === false){
+		return false;
+	}
+	else{
+		return[
+		"packName" => $packname,
+		"packDate" => fgets($fp),
+		"packDuration" => (int) fgets($fp) * 60,
+		
+		"lognName" => fgets($fp),
+		"lognDate" => fgets($fp),
+		"lognDuration" => (int) fgets($fp) * 60,
+		
+		"plateNumber" => fgets($fp)
+		];
+	}
+}
 
-
-
-function emptyPlace($file, $packDate, $packDuration) {
-	$checkingArray = file("shipment.txt");
+function emptyPlace($shipments, $packDate, $packDuration) {
+	$checkingArray = $shipments;
 
 	for ($i = 0; $i < count($checkingArray); $i++) {
 		$date = $checkingArray[$i];
