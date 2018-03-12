@@ -6,10 +6,9 @@ $number2 = new Rational(2, 3);
 echo $number1->add($number2)->toFloat() . "\n";
 echo $number1->sub($number2)->toFloat() . "\n";
 
-if($number1->isEquals($number2)){
+if ($number1->isEquals($number2)) {
 	echo "Megyegyeznek";
-}
-else{
+} else {
 	echo "Nem Egyeznek Meg";
 }
 
@@ -25,15 +24,14 @@ class Rational {
 	 */
 	private $den;
 
-
 	public function __construct($szamlalo, $nevezo) {
 		$this->num = $szamlalo;
 		$this->den = $nevezo;
 	}
 
 	/**
-     * @return Rational
-     */
+	 * @return Rational
+	 */
 	public function add(Rational $rational) {
 		return new Rational(($this->num * $rational->den) +
 				($rational->num * $this->den)
@@ -41,8 +39,8 @@ class Rational {
 	}
 
 	/**
-     * @return Rational
-     */
+	 * @return Rational
+	 */
 	public function sub(Rational $rational) {
 		return new Rational(($this->num * $rational->den) -
 				($rational->num * $this->den)
@@ -50,35 +48,38 @@ class Rational {
 	}
 
 	/**
-     * @return Rational
-     */
+	 * @return Rational
+	 */
 	public function multiplying(Rational $rational) {
 		return new Rational($this->num * $rational->num
 				, $this->den * $rational->den);
 	}
-	
+
 	/**
-     * @return Rational
-     */
+	 * @return Rational
+	 */
 	public function division(Rational $rational) {
 		return new Rational($this->num * $rational->den
 				, $this->den * $rational->num);
 	}
-
+	
+	/**
+	 * @return Float
+	 */
 	public function toFloat() {
 
 		return $this->num / $this->den;
 	}
 
-	public function toStirng() {
+	public function toString() {
 		return $this->num . "/" . $this->den;
 	}
-	
+
 	/**
-     * @return bool
-     */
+	 * @return bool
+	 */
 	public function isEquals(Rational $rational) {
-		if ($this->toFloat() == $rational->toFloat()) {
+		if (($this->num * $rational->den) == ($this->den * $rational->num)) {
 			return true;
 		} else {
 			return false;
