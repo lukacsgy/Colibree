@@ -11,14 +11,14 @@ print_r($halmaz->add(10));
 print_r($proba);
 print_r($halmaz);
 
-//print_r($proba->union($halmaz));
-//print_r($proba->intersection($halmaz));
+print_r($proba->union($halmaz));
+print_r($proba->intersection($halmaz));
 print_r($proba->substract($halmaz));
 
 if ($proba->isEquals($halmaz)) {
-	echo "Ugyan-a";
+	echo "2 halmaz ugyanaz!";
 } else {
-	echo "Ká ká Tyibigyi";
+	echo "A 2 halmaz kulonbozo!";
 }
 
 
