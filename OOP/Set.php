@@ -21,8 +21,6 @@ if ($proba->isEquals($halmaz)) {
 	echo "A 2 halmaz kulonbozo!";
 }
 
-
-
 $set1 = new Set([]);
 $set1->add(3);
 $set1->add(3);
